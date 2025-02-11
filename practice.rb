@@ -28,51 +28,44 @@ blockchain = [
 
 # 👇👇👇 Your code HERE 👇👇👇
 
-index = 0
-friend = friends[index]
+# create 4 variables to represent each user's balance
+bens_balance = 0
+brians_balance = 0
+evans_balance = 0
+anthonys_balance = 0
 
-counter = 0
-loop do 
-  if counter == 5
-    break
+# loop through the "blockchain" and increment/decrement the balances accordingly
+
+for transaction in blockchain
+  # each "transaction" in the "blockchain" array is a Hash
+
+  # if the user is the "from_user", decrement their balance
+  
+  if transaction["from_user"] == "ben"
+    bens_balance = bens_balance - transaction["amount"]
+  elsif transaction["from_user"] == "brian"
+    brians_balance = brians_balance - transaction["amount"]
+  elsif transaction["from_user"] == "evan"
+    evans_balance = evans_balance - transaction["amount"]
+  elsif transaction["from_user"] == "anthony"
+    anthonys_balance = anthonys_balance - transaction["amount"]
   end
 
-
-me = { "name" => "Ben", "location" => "Chicago", "status" => "ENTR-924 at Kellogg!" };
-puts me
-
-# Accessing data from the hash
-
-# Now that the hash is defined, we can access the attributes:
-name = me["name"]
-puts name # Ben
-
-location = me["location"]
-puts location # Chicago
-
---
-bank_account_balance = 51
-if bank_account_balance > 50
-  bank_account_balance = bank_account_balance - 50
-  puts "You have successfully withdrawn $50. New balance is $#{bank_account_balance}."
-else
-  puts "Insufficient funds for that transaction."
+  # if the user is the "to_user", increment their balance
+  if transaction["to_user"] == "ben"
+    bens_balance = bens_balance + transaction["amount"]
+  elsif transaction["to_user"] == "brian"
+    brians_balance = brians_balance + transaction["amount"]
+  elsif transaction["to_user"] == "evan"
+    evans_balance = evans_balance + transaction["amount"]
+  elsif transaction["to_user"] == "anthony"
+    anthonys_balance = anthonys_balance + transaction["amount"]
+  end
 end
 
-# Elsif Conditional Logic
-your_team_score = 2
-other_team_score = 2
-if your_team_score > other_team_score
-  puts "Yay, your team won!"
-elsif your_team_score == other_team_score
-  puts "Ok, you tied ¯\_(ツ)_/¯"
-else
-  puts "Your team lost :("
-end
 
-# Combining Expressions
-temp = 68
-precipitation = 0
-if temp >= 65 && temp <= 75 && precipitation == 0
-  puts "It's perfect outside!"
-end
+# finally, print out the result
+puts "Ben's KelloggCoin balance is #{bens_balance}"
+puts "Brian's KelloggCoin balance is #{brians_balance}"
+puts "Evan's KelloggCoin balance is #{evans_balance}"
+puts "Anthony's KelloggCoin balance is #{anthonys_balance}"
